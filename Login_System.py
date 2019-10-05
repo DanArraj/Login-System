@@ -1,3 +1,4 @@
+from getpass import getpass
 
 def register_username():
     username = input('Select username: ')
@@ -10,9 +11,10 @@ def register_username():
     file1.close()
     register_password()
 def register_password():
-    password = input('Select password: ')
-    if password != input('Reenter password for verification: '):
+    password = getpass('Select password: ')
+    if password != getpass('Reenter password for verification: '):
         password = ''
+        print('Passwords did not match, please try again.')
         register_password()
         return
     file1 = open('credentials.txt','a')
@@ -59,9 +61,9 @@ if register_or_login == 'register':
     register_username()
 elif register_or_login == 'login':
     username = input('Username: ')
-    password = input('Password: ')
+    password = getpass('Password: ')
     valid_login = login(username + '\n', password + '\n')
     if valid_login != True:
         print('INVALD USERNAME OR PASSWORD')
     elif valid_login == True:
-        print('LOGIN SUCCESSFUL.\nWelcome!')
+        print('LOGIN SUCCESSFUL.\nWelcome! ' + username)
