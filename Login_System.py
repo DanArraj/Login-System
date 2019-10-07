@@ -67,3 +67,4 @@ elif register_or_login == 'login':
         print('INVALD USERNAME OR PASSWORD')
     elif valid_login == True:
         print('LOGIN SUCCESSFUL.\nWelcome! ' + username)
+        input('Press enter to end program.')
